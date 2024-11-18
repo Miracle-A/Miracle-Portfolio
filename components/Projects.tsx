@@ -23,7 +23,7 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
       {/* Projects Scroll Container */}
-      <div className="mt-20 flex space-x-5 p-3 se:p-5 md:p-10 snap-x snap-mandatory overflow-x-scroll scrollbar-hide w-full scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
+      <div className="mt-24 se:mt-10 sm:mt-20 flex space-x-5 p-3 se:p-5 md:p-10 snap-x snap-mandatory overflow-x-scroll scrollbar-hide w-full scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
         {/* Projects Container */}
         {projects.map((project, i) => (
           <div
@@ -35,11 +35,11 @@ function Projects({ projects }: Props) {
             <motion.img
               src={urlFor(project?.image).url()}
               alt={`Project ${project.title}`}
-              className="w-full max-w-xs md:max-w-4xl h-48 md:h-96 object-contain"
+              className="w-full max-w-xs md:max-w-4xl h-40 se:h-44 md:h-96 object-contain"
             />
 
             {/* Project Title and Case Study Link */}
-            <h4 className="text-xl sm:text-2xl md:text-4xl font-semibold text-center mb-5">
+            <h4 className="text-xl sm:text-2xl md:text-4xl font-semibold text-center mb-2 sm:mb-5">
               <span className="underline decoration-[#F7AB0A]/50">
                 Case Study {i + 1} of {projects.length}:
               </span>{" "}

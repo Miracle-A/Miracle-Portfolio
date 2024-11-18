@@ -40,18 +40,18 @@ export default function ExperienceCard({ data }: ExperienceCardProps) {
       {data.map((item, i) => (
         <article
           key={i}
-          className="mt-20 se:mt-0 text-white flex flex-col items-center justify-center rounded-lg space-y-6 flex-shrink-0 w-full sm:w-[500px] md:w-[600px] xl:w-[850px] xs:h-[500px] se:h-[600px] sm:h-auto xl:h-[650px] snap-center bg-[#292929] p-2 se:p-6 hover:opacity-100 opacity-75 cursor-pointer transition-opacity duration-200 overflow-hidden"
+          className="mt-20 se:mt-16 text-white flex flex-col items-center justify-center rounded-lg space-y-6 flex-shrink-0 w-full sm:w-[500px] md:w-[600px] xl:w-[850px] xs:h-[500px] se:h-[600px] sm:h-auto xl:h-[650px] snap-center bg-[#292929] p-2 se:p-6 hover:opacity-100 opacity-75 cursor-pointer transition-opacity duration-200 overflow-hidden"
         >
           <div className="w-full flex items-center space-y-6">
             <div key={i} className="text-center flex flex-col items-center">
               {/* Center the image */}
               <div
-                className="flex justify-center w-full h-[90px] se:h-[140px] overflow-hidden" // Ensure enough height for image to show fully
+                className="flex justify-center w-full h-[90px] se:h-[110px] overflow-hidden" // Ensure enough height for image to show fully
               >
                 <Image
                   src={item.image}
                   alt={`${item.company} logo`}
-                  className="object-contain w-[90px] h-[90px] se:w-[130px] se:h-[130px] rounded-full" // Make sure the image scales without cutting off
+                  className="object-contain w-[90px] h-[90px] se:w-[110px] se:h-[110px] rounded-full" // Make sure the image scales without cutting off
                 />
               </div>
 
