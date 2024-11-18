@@ -1,7 +1,21 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ExperienceCard({ data }) {
+// Define the structure of each item in the data array
+interface ExperienceData {
+  company: string;
+  jobTitle: string;
+  date: string;
+  points: string[];
+  image: string;
+}
+
+// Define the props for the ExperienceCard component
+interface ExperienceCardProps {
+  data: ExperienceData[]; // Array of ExperienceData items
+}
+
+export default function ExperienceCard({ data }: ExperienceCardProps) {
   const fadeInUpStyle = {
     animation: "fadeInUp 1.2s ease-out forwards",
   };
@@ -26,14 +40,13 @@ export default function ExperienceCard({ data }) {
       {data.map((item, i) => (
         <article
           key={i}
-          className="mt-20 se:mt-0  text-white flex flex-col items-center justify-center rounded-lg space-y-6 flex-shrink-0 w-full sm:w-[500px] md:w-[600px] xl:w-[850px] xs:h-[500px] se:h-[600px] sm:h-auto xl:h-[650px] snap-center bg-[#292929] p-2 se:p-6 hover:opacity-100 opacity-75 cursor-pointer transition-opacity duration-200 overflow-hidden"
+          className="mt-20 se:mt-0 text-white flex flex-col items-center justify-center rounded-lg space-y-6 flex-shrink-0 w-full sm:w-[500px] md:w-[600px] xl:w-[850px] xs:h-[500px] se:h-[600px] sm:h-auto xl:h-[650px] snap-center bg-[#292929] p-2 se:p-6 hover:opacity-100 opacity-75 cursor-pointer transition-opacity duration-200 overflow-hidden"
         >
           <div className="w-full flex items-center space-y-6">
             <div key={i} className="text-center flex flex-col items-center">
               {/* Center the image */}
               <div
                 className="flex justify-center w-full h-[90px] se:h-[140px] overflow-hidden" // Ensure enough height for image to show fully
-                // style={fadeInUpStyle}
               >
                 <Image
                   src={item.image}
