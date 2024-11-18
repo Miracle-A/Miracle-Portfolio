@@ -24,7 +24,7 @@ function Skills({ skills }: Props) {
       </h3>
 
       <div className="grid xs:grid-cols-4 se:grid-cols-4 md:grid-cols-6 gap-5">
-        {skills?.map((skill) => <Skill key={skill._id} skill={skill} />)}
+        <Skill />
       </div>
     </motion.div>
   );

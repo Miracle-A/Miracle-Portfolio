@@ -1,0 +1,16 @@
+/* Define the animation */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to an element */
+.fade-in-up {
+  animation: fadeInUp 1.2s ease-out forwards;
+}

@@ -23,7 +23,7 @@ export default function About({ pageInfo }: Props) {
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
         // className="mt-20 md:mt-0 mb-10 md:-mb-20 flex-shrink-0 w-40 h-40  rounded-full object-cover md:rounded-lg md:w-[350px] md:h-[450px] lg:w-[400px] lg:h-[500px] xl:w-[560px] xl:h-[660px]"
-        className="xs:mt-36 se:mt-20 sm:mt-20 mb-0 md:-mb-1 flex-shrink-0  object-cover rounded-full se:rounded-lg w-[200px] h-[200px] se:w-[250px] se:h-[320px] sm:w-[300px] sm:h-[400px] md:w-[350px] md:h-[450px] lg:w-[400px] lg:h-[600px] xl:w-[560px] xl:h-[660px]"
+        className="xs:mt-36 se:mt-20 sm:mt-20 mb-0 md:-mb-1 flex-shrink-0  object-cover rounded-full sm:rounded-lg w-[200px] h-[200px] se:w-[300px] se:h-[300px] sm:w-[300px] sm:h-[400px] md:w-[350px] md:h-[450px] lg:w-[400px] lg:h-[600px] xl:w-[560px] xl:h-[660px]"
       />
 
       <div className="px-3 sm:px-10 mb-10">

@@ -1,0 +1,55 @@
+.skillContainer {
+  display: flex;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(100px); /* Start from the right */
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.skillContainer.show {
+  opacity: 1;
+  transform: translateX(0); /* Move to original position */
+}
+
+.skillImageWrapper {
+  position: relative;
+}
+
+.skillImage {
+  border-radius: 50%;
+  border: 1px solid #6b7280;
+  object-fit: cover;
+  width: 3rem; /* Default size */
+  height: 3rem; /* Default size */
+  transition: filter 0.3s ease;
+}
+
+.skillImage:hover {
+  filter: grayscale(100%);
+}
+
+.skillOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.skillContainer:hover .skillOverlay {
+  opacity: 1;
+}
+
+.skillPercentage {
+  font-size: 1.25rem; /* Default size */
+  font-weight: bold;
+  color: black;
+}
