@@ -23,8 +23,15 @@ function Skills({ skills }: Props) {
         Hover over a skill for current proficiency
       </h3>
 
-      <div className="grid xs:grid-cols-4 se:grid-cols-4 md:grid-cols-6 gap-5">
-        <Skill />
+      <div>
+        <motion.div
+          initial={{ x: "100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 * 0.1 }}
+          className="grid xs:grid-cols-4 se:grid-cols-4 md:grid-cols-6 gap-5"
+        >
+          <Skill />
+        </motion.div>
       </div>
     </motion.div>
   );

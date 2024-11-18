@@ -19,13 +19,7 @@ function Skill({ directionLeft }: Props) {
       {data.map((item, i) => (
         <div
           key={i}
-          className={`group relative flex cursor-pointer transition-transform duration-500 ease-in-out transform ${
-            isVisible
-              ? `translate-x-0 opacity-100`
-              : directionLeft
-                ? `translate-x-[100px] opacity-0` // Slide from right to left
-                : `translate-x-[-100px] opacity-0` // Slide from left to right (if you want)
-          }`}
+          className={`group relative flex cursor-pointer transition-transform duration-500 ease-in-out transform `}
         >
           <Image
             src={item.image} // Correctly resolved path

@@ -11,6 +11,10 @@ module.exports = {
         xs: "100px",
         se: "400px", // Custom breakpoint for 400px
       },
+      colors: {
+        "scrollbar-thumb": "#F7AB0A",
+        "scrollbar-track": "#292929",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],
