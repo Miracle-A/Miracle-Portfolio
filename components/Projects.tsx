@@ -19,7 +19,7 @@ function Projects({ projects }: Props) {
       className="relative flex flex-col items-center justify-center h-screen overflow-hidden"
     >
       {/* Project Title Section */}
-      <h3 className="absolute text-xl md:text-2xl text-gray-500 uppercase tracking-[10px] md:tracking-[17px] top-20 se:top-28 md:top-20">
+      <h3 className="absolute text-xl md:text-2xl text-gray-500 uppercase tracking-[10px] md:tracking-[17px] top-20  ">
         Projects
       </h3>
       {/* Projects Scroll Container */}
@@ -39,7 +39,7 @@ function Projects({ projects }: Props) {
             />
 
             {/* Project Title and Case Study Link */}
-            <h4 className="text-xl sm:text-2xl md:text-4xl font-semibold text-center mb-2 sm:mb-5">
+            <h4 className="text-[18px] sm:text-2xl md:text-4xl font-semibold text-center mb-2 sm:mb-5">
               <span className="underline decoration-[#F7AB0A]/50">
                 Case Study {i + 1} of {projects.length}:
               </span>{" "}
