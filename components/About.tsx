@@ -11,7 +11,7 @@ export default function About({ pageInfo }: Props) {
       initial={{ opacity: 0 }}
       transition={{ duration: 1.5 }}
       whileInView={{ opacity: 1 }}
-      className="flex flex-col relative h-screen text-center lg:text-left lg:flex-row max-w-7xl px-5 md:px-10 justify-evenly mx-auto items-center"
+      className="flex flex-col relative h-screen text-center lg:text-left lg:flex-row max-w-7xl px-5 md:px-10 gap-2 sm:justify-evenly mx-auto items-center"
     >
       <h3 className="absolute top-24 md:top-20 uppercase tracking-[10px] md:tracking-[17px] text-gray-500 text-xl md:text-2xl">
         About
@@ -53,7 +53,7 @@ export default function About({ pageInfo }: Props) {
           results-focused, and eager to make a positive contribution to your
           team!
         </span>
-        <span className="flex sm:hidden text-[15px] md:text-base">
+        <span className="flex sm:hidden text-[15px] md:text-base ">
           I am Miracle Adeoye, a senior Information Technology student at Texas
           Tech University with a 3.9 GPA, specializing in Data Analytics and
           Systems. I’m seeking opportunities in Software Development, Data

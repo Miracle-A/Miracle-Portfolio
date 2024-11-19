@@ -59,7 +59,7 @@ function Projects({ projects }: Props) {
 
             {/* Project Summary and Details */}
             <div className="text-center">
-              <p className="text-[18px] md:text-lg lg:text-xl xl:text-2xl">
+              <p className="text-[14px] md:text-lg lg:text-xl xl:text-2xl">
                 {" "}
                 {/* Adjusted sizes for larger screens */}
                 {project.summary}
