@@ -35,7 +35,7 @@ function Projects({ projects }: Props) {
             <motion.img
               src={urlFor(project?.image).url()}
               alt={`Project ${project.title}`}
-              className="w-full max-w-xs md:max-w-4xl h-40 se:h-44 md:h-96 object-contain"
+              className="w-full max-w-xs md:max-w-4xl h-40 se:h-40 md:h-96 object-contain"
             />
 
             {/* Project Title and Case Study Link */}
@@ -59,7 +59,7 @@ function Projects({ projects }: Props) {
 
             {/* Project Summary and Details */}
             <div className="text-center">
-              <p className="text-sm md:text-lg lg:text-xl xl:text-2xl">
+              <p className="text-[18px] md:text-lg lg:text-xl xl:text-2xl">
                 {" "}
                 {/* Adjusted sizes for larger screens */}
                 {project.summary}

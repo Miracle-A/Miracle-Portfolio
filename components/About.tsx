@@ -26,13 +26,13 @@ export default function About({ pageInfo }: Props) {
         className="xs:mt-36 se:mt-28 sm:mt-20 mb-0 md:-mb-1 flex-shrink-0  object-cover rounded-full sm:rounded-lg w-[200px] h-[200px] se:w-[230px] se:h-[230px] sm:w-[300px] sm:h-[400px] md:w-[350px] md:h-[450px] lg:w-[400px] lg:h-[600px] xl:w-[560px] xl:h-[660px]"
       />
 
-      <div className="px-3 sm:px-10 mb-12">
-        <h4 className="mb-3 text-2xl md:text-4xl font-semibold">
+      <div className="px-3 sm:px-1  mb-2">
+        <h4 className="mb-2 se:mb-3 sm:mb-4  text-2xl md:text-4xl font-semibold">
           Here is a{" "}
           <span className="underline decoration-[#F7ab0a]/50">little</span>{" "}
           background
         </h4>
-        <span className="hidden sm:flex text-sm md:text-base">
+        <span className="hidden sm:flex text-sm sm:text-base">
           I am Miracle Adeoye, a senior Information Technology student at Texas
           Tech University with a 3.9 GPA, specializing in Data Analytics and
           Systems. I’m passionate about continuous learning, teamwork, and
@@ -53,17 +53,15 @@ export default function About({ pageInfo }: Props) {
           results-focused, and eager to make a positive contribution to your
           team!
         </span>
-        <span className="flex sm:hidden text-sm md:text-base">
+        <span className="flex sm:hidden text-[15px] md:text-base">
           I am Miracle Adeoye, a senior Information Technology student at Texas
           Tech University with a 3.9 GPA, specializing in Data Analytics and
-          Systems. I’m passionate about continuous learning, teamwork, and
-          dedication to every project I take on. I’m seeking opportunities in
-          Software Development, Data Analysis, Software Engineering, Data
-          Engineering, and Web Development, where I can apply my technical
-          skills and creative problem-solving abilities to drive meaningful
-          innovation. Let’s connect if you’re seeking someone who is driven,
-          results-focused, and eager to make a positive contribution to your
-          team!
+          Systems. I’m seeking opportunities in Software Development, Data
+          Analysis, Software Engineering, Data Engineering, and Web Development,
+          where I can apply my technical skills and creative problem-solving
+          abilities to drive meaningful innovation. Let’s connect if you’re
+          seeking someone who is driven, results-focused, and eager to make a
+          positive contribution to your team!
         </span>
       </div>
     </motion.div>
