@@ -96,13 +96,13 @@ export default function ExperienceCard({ data }: ExperienceCardProps) {
         <>
           <button
             onClick={handlePrev}
-            className="absolute right-[70px] top-12 se:top-7 transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
+            className="absolute  right-[60px] se:right-[70px] top-28 se:top-24 transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 top-12 se:top-7 transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
+            className="absolute right-2 se:right-4 top-28 se:top-24 transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
           >
             <FaArrowRight />
           </button>
