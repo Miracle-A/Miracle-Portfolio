@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { FaArrowDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Project } from "../typings";
 import { urlFor } from "../sanity";
 
@@ -9,6 +10,43 @@ type Props = {
 
 function Projects({ projects }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    scrollToProject((currentIndex + 1) % projects.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    scrollToProject((currentIndex - 1 + projects.length) % projects.length);
+  };
+
+  const scrollToProject = (index: number) => {
+    const element = document.getElementById(`project-${index}`);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 640); // Update based on `sm` breakpoint
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <motion.div
@@ -19,27 +57,27 @@ function Projects({ projects }: Props) {
       className="relative flex flex-col items-center justify-center h-screen overflow-hidden"
     >
       {/* Project Title Section */}
-      <h3 className="absolute text-xl md:text-2xl text-gray-500 uppercase tracking-[10px] md:tracking-[17px] top-20  ">
+      <h3 className="absolute text-xl md:text-2xl text-gray-500 uppercase tracking-[10px] md:tracking-[17px] top-20">
         Projects
       </h3>
+
       {/* Projects Scroll Container */}
-      <div className="mt-24 se:mt-10 sm:mt-20 flex space-x-5 p-3 se:p-5 md:p-10 snap-x snap-mandatory overflow-x-scroll scrollbar-hide w-full scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
-        {/* Projects Container */}
+      <div className="mt-24 flex space-x-5 p-3 md:p-10 snap-x snap-mandatory overflow-x-scroll scrollbar-hide w-full">
         {projects.map((project, i) => (
           <div
             key={project._id}
             id={`project-${i}`}
-            className="w-full h-full flex-shrink-0 snap-center flex flex-col items-center justify-center p-1 sm:p-5 md:p-20"
+            className="w-full h-full flex-shrink-0 snap-center flex flex-col items-center justify-center p-2 se:p-5 md:p-20"
           >
             {/* Project Image */}
             <motion.img
-              src={urlFor(project?.image).url()}
+              src={urlFor(project?.image).url() || "/placeholder.png"}
               alt={`Project ${project.title}`}
-              className="w-full max-w-xs md:max-w-4xl h-40 se:h-40 md:h-96 object-contain"
+              className="pt-5 w-full max-w-xs md:max-w-4xl h-40 md:h-96 object-contain"
             />
 
             {/* Project Title and Case Study Link */}
-            <h4 className="text-[18px] sm:text-2xl md:text-4xl font-semibold text-center mb-2 sm:mb-5">
+            <h4 className="text-lg sm:text-2xl md:text-4xl font-semibold text-center mb-5">
               <span className="underline decoration-[#F7AB0A]/50">
                 Case Study {i + 1} of {projects.length}:
               </span>{" "}
@@ -57,17 +95,29 @@ function Projects({ projects }: Props) {
               )}
             </h4>
 
-            {/* Project Summary and Details */}
-            <div className="text-center">
-              <p className="text-[14px] md:text-lg lg:text-xl xl:text-2xl">
-                {" "}
-                {/* Adjusted sizes for larger screens */}
-                {project.summary}
-              </p>
-            </div>
+            {/* Project Summary */}
+            <p className="text-center text-sm md:text-lg">{project.summary}</p>
           </div>
         ))}
       </div>
+
+      {/* Navigation Buttons */}
+      {isMobileView && projects.length > 1 && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="absolute right-24 top-[140px] se:top-44 transform -translate-y-1/2 bg-black text-white rounded-full p-3 hover:bg-gray-800 transition-all"
+          >
+            <FaArrowLeft />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-10 top-[140px] se:top-44 transform -translate-y-1/2 bg-black text-white rounded-full p-3 hover:bg-gray-800 transition-all"
+          >
+            <FaArrowRight />
+          </button>
+        </>
+      )}
     </motion.div>
   );
 }
