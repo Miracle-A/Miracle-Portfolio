@@ -81,7 +81,7 @@ export default function ExperienceCard({ data }: ExperienceCardProps) {
 
           {/* Arrow Button - Positioned at the bottom of each card */}
           <div
-            className={`sm:hidden absolute bottom-0 left-[45%] transform -translate-x-1/2 flex justify-center items-center w-[40px] h-[40px] bg-black rounded-full animate-pulse`}
+            className={`sm:hidden absolute bottom-5 left-[50%] transform -translate-x-1/2 flex justify-center items-center w-[40px] h-[40px] bg-black rounded-full animate-pulse`}
           >
             <span className="text-white text-[19px]">
               <FaArrowDown />
