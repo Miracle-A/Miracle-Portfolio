@@ -61,8 +61,29 @@ function Projects({ projects }: Props) {
         Projects
       </h3>
 
-      {/* Projects Scroll Container */}
-      <div className="mt-24 flex space-x-5 p-3 md:p-10 snap-x snap-mandatory overflow-x-scroll scrollbar-hide w-full">
+      {/* Projects Scroll Container with custom scrollbar */}
+      <div
+        className="mt-24 flex space-x-5 p-3 md:p-10 snap-x snap-mandatory overflow-x-scroll w-full"
+        style={{
+          scrollbarWidth: "thin", // Firefox scrollbar styling
+          scrollbarColor: "#F7AB0A #292929", // Firefox scrollbar colors
+        }}
+      >
+        {" "}
+        <style jsx>{`
+          /* Webkit-based browser scrollbar styling */
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+          ::-webkit-scrollbar-track {
+            background: #292929;
+          }
+          ::-webkit-scrollbar-thumb {
+            background-color: #f7ab0a;
+            border-radius: 10px;
+            border: 2px solid #292929;
+          }
+        `}</style>{" "}
         {projects.map((project, i) => (
           <div
             key={project._id}

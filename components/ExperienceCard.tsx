@@ -18,91 +18,117 @@ export default function ExperienceCard({ data }: ExperienceCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 640); // Adjust based on `sm` breakpoint
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  const scrollToProject = (index: number) => {
+    const element = document.getElementById(`data-${index}`);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % data.length);
+    const nextIndex = (currentIndex + 1) % data.length;
+    setCurrentIndex(nextIndex);
+    scrollToProject(nextIndex);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + data.length) % data.length);
+    const prevIndex = (currentIndex - 1 + data.length) % data.length;
+    setCurrentIndex(prevIndex);
+    scrollToProject(prevIndex);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth < 640); // Update based on `sm` breakpoint
-    };
-
-    // Initial check
-    handleResize();
-
-    // Add event listener for resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <div className="relative flex items-center justify-center w-full overflow-hidden">
-      {/* Render the current card */}
-      <article
-        key={currentIndex}
-        className="mt-20 se:mt-16 text-white flex flex-col items-center justify-center rounded-lg space-y-6 flex-shrink-0 w-full sm:w-[500px] md:w-[600px] xl:w-[850px] xs:h-[500px] se:h-[600px] sm:h-auto xl:h-[650px] snap-center bg-[#292929] p-2 se:p-6 hover:opacity-100 opacity-75 cursor-pointer transition-opacity duration-200 overflow-hidden relative"
+    <div className=" flex flex-col items-center justify-center w-full h-screen overflow-hidden">
+      {/* Scroll Container for Experience Cards */}
+      <div
+        className="relative mt-24 flex space-x-5 p-3 md:p-10 snap-x snap-mandatory overflow-x-scroll w-full"
+        style={{
+          scrollbarWidth: "thin", // Firefox scrollbar styling
+          scrollbarColor: "#F7AB0A #292929", // Firefox scrollbar colors
+        }}
       >
-        <div className="w-full flex items-center space-y-6">
-          <div className="text-center flex flex-col items-center">
-            {/* Center the image */}
+        <style jsx>{`
+          /* Webkit-based browser scrollbar styling */
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
+          ::-webkit-scrollbar-track {
+            background: #292929;
+          }
+          ::-webkit-scrollbar-thumb {
+            background-color: #f7ab0a;
+            border-radius: 10px;
+            border: 2px solid #292929;
+          }
+        `}</style>
+
+        {data.map((experience, index) => (
+          <div
+            id={`data-${index}`}
+            key={index}
+            className={`flex-shrink-0 h-full snap-center flex flex-col items-center justify-between bg-[#292929] text-white rounded-lg p-6 opacity-75 hover:opacity-100 transition-opacity duration-200 relative`}
+            style={{
+              width: isMobileView ? "90%" : "80%", // Adjust width for mobile vs desktop
+              maxWidth: "1000px", // Maximum width for larger screens
+              opacity: currentIndex === index ? "1" : "0.5", // Highlight current card
+            }}
+          >
+            {/* Company logo */}
             <div className="flex justify-center w-full h-[90px] se:h-[110px] overflow-hidden">
               <Image
-                src={data[currentIndex].image}
-                alt={`${data[currentIndex].company} logo`}
+                src={experience.image}
+                alt={`${experience.company} logo`}
                 className="object-contain w-[90px] h-[90px] se:w-[110px] se:h-[110px] rounded-full"
               />
             </div>
-
-            {/* Text content */}
-            <div className="px-1 sm:px-10 w-full">
-              <h4 className="text-xl se:text-2xl sm:text-3xl font-light text-center">
-                {data[currentIndex].company}
-              </h4>
-              <p className="font-bold text-lg se:text-xl sm:text-2xl mt-1 text-center">
-                {data[currentIndex].jobTitle}
-              </p>
-              <p className="uppercase py-3 sm:py-5 text-gray-300 text-center">
-                {data[currentIndex].date}
-              </p>
-
-              {/* Points list */}
-              <ul className="list-disc list-inside space-y-4 text-base sm:text-lg h-72 sm:h-80 overflow-y-auto scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 text-left">
-                {data[currentIndex].points.map((point, j) => (
-                  <li key={j}>{point}</li>
-                ))}
-              </ul>
+            {/* Company Info */}
+            <h4 className="text-2xl sm:text-3xl font-light text-center">
+              {experience.company}
+            </h4>
+            <p className="font-bold text-lg sm:text-2xl mt-2 text-center">
+              {experience.jobTitle}
+            </p>
+            <p className="uppercase py-4 text-gray-300 text-center">
+              {experience.date}
+            </p>
+            {/* Points */}
+            <ul className="list-disc list-inside space-y-4 text-base sm:text-lg h-60 overflow-y-auto scrollbar text-left">
+              {experience.points.map((point, idx) => (
+                <li key={idx}>{point}</li>
+              ))}
+            </ul>
+            {/* Arrow for scrolling */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black rounded-full p-3 animate-pulse">
+              <FaArrowDown className="text-white" />
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* Arrow Button */}
-        <div
-          className={`sm:hidden absolute bottom-5 left-[50%] transform -translate-x-1/2 flex justify-center items-center w-[40px] h-[40px] bg-black rounded-full animate-pulse`}
-        >
-          <span className="text-white text-[19px]">
-            <FaArrowDown />
-          </span>
-        </div>
-      </article>
-
-      {/* Navigation buttons for smaller screens */}
       {isMobileView && (
         <>
           <button
             onClick={handlePrev}
-            className="absolute  right-[60px] se:right-[70px] top-28 se:top-24 transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
+            className="absolute  right-[60px] se:right-[80px] top-[150px] se:top-[160px] transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-2 se:right-4 top-28 se:top-24 transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
+            className="absolute right-2 se:right-7 top-[150px] se:top-[160px] transform -translate-y-1/2 bg-black text-white rounded-full p-[10px] hover:bg-gray-800 transition-all"
           >
             <FaArrowRight />
           </button>
