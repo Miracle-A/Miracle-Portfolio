@@ -127,13 +127,13 @@ function Projects({ projects }: Props) {
         <>
           <button
             onClick={handlePrev}
-            className="absolute right-24 top-[140px] se:top-44 transform -translate-y-1/2 bg-black text-white rounded-full p-3 hover:bg-gray-800 transition-all"
+            className="absolute right-24 top-[140px] se:top-40 transform -translate-y-1/2 bg-black text-white rounded-full p-3 hover:bg-gray-800 transition-all"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-10 top-[140px] se:top-44 transform -translate-y-1/2 bg-black text-white rounded-full p-3 hover:bg-gray-800 transition-all"
+            className="absolute right-10 top-[140px] se:top-40 transform -translate-y-1/2 bg-black text-white rounded-full p-3 hover:bg-gray-800 transition-all"
           >
             <FaArrowRight />
           </button>

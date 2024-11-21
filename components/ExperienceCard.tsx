@@ -79,19 +79,19 @@ export default function ExperienceCard({ data }: ExperienceCardProps) {
           <div
             id={`data-${index}`}
             key={index}
-            className={`flex-shrink-0 h-full snap-center flex flex-col items-center justify-between bg-[#292929] text-white rounded-lg p-6 opacity-75 hover:opacity-100 transition-opacity duration-200 relative`}
+            className={`flex-shrink-0 h-full snap-center flex flex-col items-center justify-between bg-[#292929] text-white rounded-lg p-3 sm:p-6 opacity-75 hover:opacity-100 transition-opacity duration-200 relative`}
             style={{
-              width: isMobileView ? "90%" : "80%", // Adjust width for mobile vs desktop
+              width: isMobileView ? "100%" : "80%", // Adjust width for mobile vs desktop
               maxWidth: "1000px", // Maximum width for larger screens
               opacity: currentIndex === index ? "1" : "0.5", // Highlight current card
             }}
           >
             {/* Company logo */}
-            <div className="flex justify-center w-full h-[90px] se:h-[110px] overflow-hidden">
+            <div className="flex justify-center w-full h-[90px] se:h-[100px] overflow-hidden">
               <Image
                 src={experience.image}
                 alt={`${experience.company} logo`}
-                className="object-contain w-[90px] h-[90px] se:w-[110px] se:h-[110px] rounded-full"
+                className="object-contain w-[90px] h-[90px] se:w-[100px] se:h-[100px] rounded-full"
               />
             </div>
             {/* Company Info */}
